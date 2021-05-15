@@ -68,5 +68,43 @@
         { text: 'Three', value: 'C' }
     ];
 
-    objarray.push( {text:} );
+    // objarray.push({ text: 'Four', value: 'D' });
+    // console.log(objarray);
+
+    // // var test = { text: '2', value: '2' }
+    // // objarray[1].splice( 1, 1, test );
+    // // console.log( objarray );
+
+    // objarray[1].text = "2";
+    // objarray[1].value = "2";
+    // console.log(objarray);
+
+    // delete objarray[3];
+    // console.log(objarray);
+
+    // var arrfilter = objarray.filter( ( value, idx, array ) => {
+    //     return value.text == 'One';
+    // } );
+    // console.log(objarray);
+
+    // c
+    objarray[objarray.length] = {
+        text: "four",
+        value: "D"
+    }
+    debugger;  // 디버깅 점프 F8
+    // u
+    objarray[1] = {
+        text: "2",
+        value: "2"
+    }
+
+    debugger;  // 한줄씩 F10
+
+    // search
+    var arrfilter = objarray.filter( (item, idx, items) => {
+        return item.text === "One"
+    } );
+    console.log(objarray);
+    console.log(arrfilter);
 </script>

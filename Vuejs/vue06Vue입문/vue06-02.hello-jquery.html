@@ -8,9 +8,9 @@
 </head>
 
 <body>
-    <xmp>
+    <p>
         jQueyry를 사용하여 "Hello, jQuery!!!!" 를 출력한다.
-    </xmp>
+    </p>
     <hr />
 
     <div id="app">
@@ -20,4 +20,11 @@
 
 </body>
 
+<script>
+    $("#app>p").text("test");
+    $("button").on("click", function(event) {
+        alert("test");
+        $("#app>p").text("제이쿼리 클릭!");
+    });
+</script>
 </html>

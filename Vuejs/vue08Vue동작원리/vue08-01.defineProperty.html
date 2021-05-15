@@ -71,3 +71,44 @@
 </html>
 
 <!-- vue 플러그인 임포트   -->
+
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+
+<script>
+   var vm1 = new Vue({
+       /* edtmc^2w */
+       el: "#app1",
+       data: {   // -> $data
+        msg: "Hello"        // vm1.$data.msg = "vue"   데이터 변경시 화면 수정
+       }
+   });
+
+  var app2 = document.getElementById("app2");
+  var data = {  }; // Data == Model
+
+  // 자바스크립트로 viewModel 객체 구현
+  Object.defineProperties(
+      data,
+      'msg',
+      {
+        get: function () {
+            return app2.innerHTML;
+        }
+      },
+      {
+        set: function (value) {
+            app2.innerHTML = value;
+        }
+      }
+  );
+
+  debugger;
+  console.log(data.msg); // 정보 가져 오기
+
+  debugger;
+  data.msg = "aaa";
+  console.log(data.msg); // 정보 가져 오기
+
+</script>
