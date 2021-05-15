@@ -243,3 +243,46 @@
         </div>
     </body>
 </html>
+
+<script>
+    var foo = {
+        name  : 'foo',
+        age   : 30,
+        array : [1,4,5,5],
+        run   : function () {
+            return this.name;
+        },
+    };
+
+    console.log( foo.run() );
+    console.log( foo.name );
+
+    console.log( foo['age'] );
+
+    foo.gender = "man";
+    console.log( foo.gender );
+
+    foo.name = "bar";
+    console.log( foo.name );
+
+    // delete 연산자는 가급적 사용하지 말자
+    delete foo.gender;
+    console.log( foo.gender );
+
+    var Dog = {
+        name: "Fido",
+        weight: 40,
+        breed: "Mixed",
+        loves: ["walks", "fetching balls"]
+    }
+    console.log( Dog );
+
+    var Book = {
+        name: "	Nature of Code",
+        cost: 30000,
+        writer: "다니엘",
+        ISBN: 9788968481901,
+        page: 620
+    }
+    console.log( Book );
+</script>
