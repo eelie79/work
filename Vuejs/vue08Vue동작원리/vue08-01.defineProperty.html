@@ -89,17 +89,18 @@
   var data = {  }; // Data == Model
 
   // 자바스크립트로 viewModel 객체 구현
-  Object.defineProperties(
+  Object.defineProperty(
       data,
       'msg',
       {
         get: function () {
             return app2.innerHTML;
-        }
-      },
-      {
+        },
+
         set: function (value) {
+            debugger;
             app2.innerHTML = value;
+
         }
       }
   );

@@ -83,3 +83,49 @@
 </html>
 
 <!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+   new Vue({
+       /* edtmc^2w */
+       el: "#app",
+       data: {
+              mesg1: null,
+              // mesg2: null,   // computed 중복이 불가함
+              mesg3: null
+       },
+       //template: ``,
+       methods: {
+            msgKey: function(event) {  // event.taget 이벤트 발생시킨 태그 -> value 프로퍼티(속성) 값
+                 console.log(event.target.value);
+                 // this.$data.mesg1 = event.target.value;
+                 this.$set( this.$data, 'mesg1', event.target.value);  // 중간 입력칸은 문자열로
+           }
+       },
+       components: {
+           /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+       },
+       computed: {
+           /* 자동처리 + 동기식. 메서드로 작성. return 필수. 한쪽에만 존재 */
+           mesg2: function() {  // return 필수, computed 동일 이름 사용 불가 -> mesg2: null, X, 데이터 속성 변경에 자동 계산 목적
+                 return this.$data.mesg1 + 'computed에서 생성된 값';
+           }
+
+       },
+       watch: {
+           /* 자동처리 + 비동기식. data 에 등록된 프로퍼티 모니터링. 메서드로 작성. 매개변수 입력 필수 data 종속관계 */
+           mesg1: function (value) {   // 메세지 1  value 값 모니터링  데이터에 등록된 프로퍼티 모니터링-> ajax 등
+              // this.$data.mesg3 = value;  // value === this.$data.mesg1
+              this.$set( this.$data, 'mesg3', value);
+           }
+
+       },
+       mounted: function() {
+           console.log("mounted");
+       },
+       updated: function() {
+           console.log("updated");
+       },
+   });
+
+</script>

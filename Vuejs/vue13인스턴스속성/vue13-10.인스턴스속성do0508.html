@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0">
+        <title>Vue Template - Watch</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <!-- CSS import -->
+        <link rel="stylesheet"
+            href="../css/reset.css">
+        <style>
+            input {
+                width: 250px;
+            }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue Template - Watch</title>
+            p>span {
+                border: 1px dashed blue;
+                margin: 0 10px;
+                padding: 5px 10px;
+            }
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-    <!-- CSS import -->
-    <link rel="stylesheet" href="../css/reset.css">
-
-    <style>
-        input {
-            width: 250px;
-        }
-
-        p>span {
-            border: 1px dashed blue;
-            margin: 0 10px;
-            padding: 5px 10px;
-        }
-    </style>
-</head>
-
-<body>
-    <xmp>
+        </style>
+    </head>
+    <body>
+        <xmp>
         Vue Reactivity 에 대해서 학습한다.
         Vue 인스턴스 속성중에 data, methods, watch, computed 의 특성과 차이점을 학습한다.
 
@@ -48,18 +47,60 @@
 
         [참조] page 106, 109~111, 179
     </xmp>
-    <hr>
-
-    <div id="app">
-        <input v-model:value="message">
-        <button v-on:click="reverseMsg">문자열 역순</button>
-        <p> </p>
-        <p>methods 속성을 이용한 수동 반영: <span>{{ methodscopy }}</span></p>
-        <p>watch 속성을 자동 반영: <span>{{ watchcopy }}</span></p>
-        <p>computed 속성을 자동 반영: <span>{{ computedcopy }}</span></p>
-    </div>
-</body>
-
+        <hr>
+        <div id="app">
+            <input v-model:value="message"> <!-- v-model : 입력 태그에서만 사용 data 에 등록 양방향 바인딩 지시자 -->
+            <button v-on:click="reverseMsg">문자열 역순</button><!-- v-on : methods -->
+            <p> </p>
+            <p>methods 속성을 이용한 수동 반영: <span>{{ methodscopy }}</span></p>
+            <p>watch 속성을 자동 반영: <span>{{ watchcopy }}</span></p>
+            <p>computed 속성을 자동 반영: <span>{{ computedcopy }}</span></p>
+        </div>
+    </body>
 </html>
-
 <!-- vue 플러그인 임포트   -->
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            message: null,  // 지켜보는 데이터 v-model -> 양방향 데이터 화면과 데이터가 같이 움직인다
+            methodscopy: null,
+            watchcopy: null,
+            // computedcopy: null   -> computed는 같은 이름으로 데이터에 선언하지 않는다. data와 computed 공존 불가
+        },
+        //template: ``,
+        methods: {
+            reverseMsg: function (params) {
+                // this.$data.methodscopy = this.$data.message;
+                this.$set( this.$data, 'methodscopy', this.$data.message);
+            }
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        },
+        computed: {
+            /* 자동처리 + 동기식. 메서드로 작성. return 필수. */
+            computedcopy: function() {  // return 필수
+                 return this.$data.message + 'computed 생성 값';
+           }
+        },
+        watch: {
+            /* 자동처리 + 비동기식. data 에 등록된 프로퍼티 모니터링. 메서드로 작성. 매개변수 입력 필수  */
+            message: function (value) {  // 모니터링할 데이터 연결
+                // this.$data.watchcopy = value;  // value === this.$data.message;
+                this.$set( this.$data, 'watchcopy', value);
+            }
+        },
+        mounted: function () {
+            console.log("mounted");
+        },
+        updated: function () {
+            console.log("updated");
+        },
+    });
+
+</script>

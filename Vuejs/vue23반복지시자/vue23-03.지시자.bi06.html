@@ -34,9 +34,19 @@
             <label for="">전화번호</label><input v-model:value="tel">
             <label for="">주소</label><input v-model:value="address">
     </xmp>
+
+
+
     <hr>
 
     <div id="app" class="col-md-10 offset-md-1">
+
+        <label for="">이름</label><input v-model:value="name">
+        <label for="">전화번호</label><input v-model:value="tel">
+        <label for="">주소</label><input v-model:value="address">
+        <hr>
+        <button v-on:click="clickBind">추가</button>
+
         <table id="list" class="table-bordered">
             <thead>
                 <tr class="bg-warning text-white text-center">
@@ -58,10 +68,52 @@
     </div>
 
 
-    
+
 
 </body>
 
 </html>
 
 <!-- vue 플러그인 임포트   -->
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+new Vue({
+    /* edtmc^2w */
+    el: "#app",
+    data: {
+        contacts: [
+                { name: '설현1', tel: '010-000-0000', address: '서울 강남구 111'},
+                { name: '설현2', tel: '010-222-0000', address: '서울 강남구 222'},
+                { name: '설현3', tel: '010-333-0000', address: '서울 강남구 333'},
+        ],
+        name: null,
+        tel: null,
+        address: null,
+    },
+    //template: ``,
+    methods: {
+        clickBind: function (event) {
+            // debugger;  // F8 디버거 실행
+            // this.$data.contacts.push( { name: '설현3', tel: '010-333-0000', address: '서울 강남구 333'  });
+
+
+            // 객체생성
+            var obj = {
+                name: this.$data.name,
+                tel: this.$data.tel,
+                address: this.$data.address
+            }
+
+            // this.$data.contacts.push( obj );
+
+            // this.$data.contacts[ this.$data.contacts.length ] = obj;
+
+            this.$set( this.$data.contacts, this.$data.contacts.length, obj );
+
+        }
+    }
+});
+
+</script>

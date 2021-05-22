@@ -111,3 +111,63 @@
 </html>
 
 <!-- vue 플러그인 임포트   -->
+
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    new Vue({
+        /* edtmc^2w */
+        el: "#app",
+        data: {
+            arr: [1,2,3,4,5]
+        },
+        //template: ``,
+        methods: {
+            change1: function(event) {
+                console.log(event.target);  // 이벤트 발생한 태그
+                // this.$data.arr[0] = 100;
+                this.$set(this.$data.arr, 0, 100);   // 패턴
+                console.log(this.$data.arr);
+            },
+            change2: function (params) {
+                console.log(event.target);
+                Vue.set(this.$data.arr, '1', 300);
+                console.log(this.$data.arr);
+            },
+            change3: function (params) {  // splice() - 배열 재할당
+                console.log(event.target);
+                this.$data.arr.splice(0,2);
+                console.log(this.$data.arr);
+            },
+            change4: function (params) { // 리액트 기법
+                console.log(event.target);
+                // var arr_copy = [50, 3. 4. 5, 70]
+                var arr_copy = [500, ...this.$data.arr, 70];  // ... 스프레드 연산자 ...this.$data.arr = 3,4,5
+                console.log(arr_copy );
+                // this.$data.arr = arr_copy;
+                this.$set(this.$data ,'arr' , arr_copy);  // '프로퍼티 문자열' 객체에  두번째 인자는 문자열로 처리 방번호
+               
+            }
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        },
+        computed: {
+            /* 자동처리 + 동기식. 메서드로 작성. return 필수. */
+
+        },
+        watch: {
+            /* 자동처리 + 비동기식. data 에 등록된 프로퍼티 모니터링. 메서드로 작성. 매개변수 입력 필수  */
+
+        },
+        mounted: function() {
+            console.log("mounted");
+        },
+        updated: function() {
+            console.log("updated");
+        },
+    });
+
+</script>
+
+

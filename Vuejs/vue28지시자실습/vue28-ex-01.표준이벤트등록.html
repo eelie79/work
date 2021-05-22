@@ -67,17 +67,17 @@
         </xmp>
         <ul>
             <li>
-                <a class="image3" href="../images/image3.jpg" click="imageclick">
+                <a class="image3" href="../images/image3.jpg" @click="imageclick">
                     강아지 사진
                 </a>
             </li>
             <li>
-                <a class="image3" href="../images/image4.jpg" click="imageclick">
+                <a class="image3" href="../images/image4.jpg" @click="imageclick">
                     고양이 사진
                 </a>
             </li>
         </ul>
-        <img id="img2" src="img_image3" />
+        <img id="img2" :src="img_image3" />
         <hr />
 
         <xmp>
@@ -89,8 +89,9 @@
             이미지 위에 마우스를 내리면(mouseout ) ==> ../images/but1.gif , ../images/img_swap_off.png
             이미지 위에 마우스를 올리면(mouseover) ==> ../images/but2.gif , ../images/img_swap_on.png
         </xmp>
-        <img src="img_but1" id="but1"     mouseover="imageover" mouseout="imageout" />
-        <img src="img_swap" id="img-swap" mouseover="imageover" mouseout="imageout" />
+        <img src="img_but1"  id="but1" @mouseover="imageover" @mouseout="imageout" />
+        <img src="img_swap" id="img-swap" @mouseover="imageover" @mouseout="imageout" />
+
         <hr />
 
         <xmp>
@@ -99,20 +100,20 @@
             span에 mouseup 이벤트 핸들러를 작성하시오.   ==> spanmouseup.   background-color를 pink로 설정
             span에 mouseout 이벤트 핸들러를 작성하시오.  ==> spanmouseout.  background-color를 red로 설정
         </xmp>
-        <span mouseover= "spanmouseover"
-              mousedown= "spanmousedown"
-              mouseup  = "spanmouseup"
-              mouseout = "spanmouseout" >
+        <span @mouseover= "spanmouseover"
+        @mousedown= "spanmousedown"
+        @mouseup  = "spanmouseup"
+        @mouseout = "spanmouseout"  style="">
         </span>
-        <span mouseover= "spanmouseover"
-              mousedown= "spanmousedown"
-              mouseup  = "spanmouseup"
-              mouseout = "spanmouseout" >
+        <span @mouseover= "spanmouseover"
+        @mousedown= "spanmousedown"
+        @mouseup  = "spanmouseup"
+        @mouseout = "spanmouseout"  style="">
         </span>
-        <span mouseover= "spanmouseover"
-              mousedown= "spanmousedown"
-              mouseup  = "spanmouseup"
-              mouseout = "spanmouseout">
+        <span @mouseover= "spanmouseover"
+        @mousedown= "spanmousedown"
+        @mouseup  = "spanmouseup"
+        @mouseout = "spanmouseout" style="">
         </span>
         <hr />
 
@@ -124,13 +125,16 @@
             "vue23-01.v-for와배열.html" 를 참조하여 option 부분을 v-for 를 사용하도록 수정하시오.
 
         </xmp>
-        <select id="sel" change="selectchange">
+        <select id="sel" @change="selectchange">
             <option value="../images/strawberry.gif">딸기</option>
             <option value="../images/banana.gif">바나나</option>
             <option value="../images/apple.gif" selected>사과</option>
+
+            <!-- <option v-for:value="option in options"> {{ fru }}</option> -->
+
         </select>
 
-        <img id="img" src="img_select" />
+        <img id="img" v-for:src="img_select" />
         <hr />
 
         <xmp>
@@ -144,10 +148,72 @@
 
     </div>
 
-    
+    <script>
+
+    </script>
 
 </body>
 
 </html>
 
 <!-- vue 플러그인 임포트   -->
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+ new Vue({
+     /* edtmc^2w */
+     el: "#app",
+     data: {
+        img_image3: null,
+        // options: ["딸기", "바나나", "사과"],
+        img_select: "test",
+     },
+     // template: `#template`,
+     methods: {
+        imageclick: function (event) {
+            // console.log(event.target);
+            event.preventDefault();
+            console.log(event.target.href);
+            this.$data.img_image3 = event.target.href;
+        },
+        imageover: function (event) {
+            // this.$data.but1.src = "../images/but2.gif";
+            // event.target.src = "../images/but2.gif";
+
+            if ( event.target.id == "but1" ) {
+                 event.target.src = "../images/but2.gif";
+            } else {
+                 event.target.src = "../images/img_swap_on.png";
+            }
+
+        },
+        imageout: function (event) {
+
+            if ( event.target.id == "but1" ) {
+                event.target.src = "../images/but1.gif";
+            } else {
+                event.target.src = "../images/img_swap_off.png";
+            }
+        },
+        spanmouseover: function (event) {
+               event.target.style = "background-color: yellow";
+        },
+        spanmousedown: function (event) {
+            event.target.style = "background-color: blue";
+        },
+        spanmouseup: function (event) {
+            event.target.style = "background-color: pink";
+        },
+        spanmouseout: function (event) {
+            event.target.style = "background-color: red";
+        },
+        selectchange: function (event) {
+            // this.$data.img_select = event.target.value;
+            this.$data.img_select = "../images/strawberry.gif";
+        },
+
+     }
+ });
+
+</script>
