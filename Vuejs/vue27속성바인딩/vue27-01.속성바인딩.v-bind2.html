@@ -80,56 +80,38 @@
      /* edtmc^2w */
      el: "#app1",
      data: {
-        idA: "1234",
-        classA: "container",
-        styleA: {
-           color: "blue",
-           fontSize: "20px"
-        },
-        message: "v-bind 디렉티브",
-        imagePath: "../images/heart.png"
+        idA: null,
+        classA: null,
+        styleA: null,
+        message: null,
+        imagePath: null
      },
      //template: ``,
      methods: {
         // this.$data.style1 = obj;
         // this.$set(this.$data, "style", obj);
-
+        // 클릭이벤트 핸들러 등록
         clickBindId: function (event) {
-            this.$data.id = "1234"
+            this.$data.idA = "1234";
         },
         clickBindClass: function (event) {
-            this.$data.class = "container"
+            // this.$data.classA = "container";
+            debugger;
+            this.$set(this.$data, "classA", "container");
         },
         clickBindStyle: function (event) {
-            this.$data.style = {
+            var obj = {
                 color: "blue",
-                fontSize: "20px"
+                fontSize: "20px",
             }
+            this.$set(this.$data, "styleA", obj);
         },
         clickBindValue: function (event) {
-            this.$data.value = "v-bind 디렉티브"
+            this.$data.message = "v-bind 디렉티브"
         },
         clickBindSrc: function (event) {
-            this.$data.src = "../images/heart.png"
+            this.$data.imagePath = "../images/heart.png"
         },
-     },
-     components: {
-         /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
-
-     },
-     computed: {
-         /* 자동처리 + 동기식. 메서드로 작성. return 필수. */
-
-     },
-     watch: {
-         /* 자동처리 + 비동기식. data 에 등록된 프로퍼티 모니터링. 메서드로 작성. 매개변수 입력 필수  */
-
-     },
-     mounted: function() {
-         console.log("mounted");
-     },
-     updated: function() {
-         console.log("updated");
      },
  });
 

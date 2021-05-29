@@ -49,6 +49,8 @@
     <div id="app">
         <h2>컴포넌트 등록</h2>
 
+        <!-- 자식 컴포넌트 데이터 or 오른쪽 부모 인스턴스 데이터
+               localmsg1 -> 붐로부터 받을 변수명 -->
         <global-component v-bind:propsdata="globalmsg1"></global-component>
         <global-component v-bind:propsdata="globalmsg2"></global-component>
         <hr>
@@ -61,3 +63,92 @@
 </html>
 
 <!-- vue 플러그인 임포트   -->
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+    // 전역 컴포넌트 vuegc
+    Vue.component("global-component", {
+        /* pdtmc^2w */
+        props: [
+            "propsdata"
+        ] ,
+        // props: {
+        //     propsdata
+        // } ,
+        data: function() {
+            return {
+
+            }
+        },
+        // propsdata -> template
+        template: `
+            <div>
+                전역 컴포넌트
+                <button v-on:click="gclick">{{propsdata}}</button>
+            </div>
+        `,
+        methods: {
+            /* 이벤트 핸들러 등록 {{localmsg}} */
+            gclick: function (event) {
+                console.log(event.target);
+                alert(event.target.innerHTML);
+            }
+        },
+    });
+
+    // 지역 컴포넌트 만들기: local-component
+    var localComponent = {
+        /* pdtmc^2w */
+        props: [
+            "localmsg"
+        ] ,
+        data: function() {
+            /* 컴포넌트 안에서 사용되는 변수 등록, 개별 변수 {{localmsg}} */
+            return {
+
+            }
+        },
+        template: `
+            <div>
+                지역 컴포넌트가 등록되었습니다!
+                <span style="border: 1px dashed blue; background-color:lightgray; padding: 5px;"
+                    v-on:onclick="lclick">
+                    {{localmsg}}
+                </span>
+            </div>
+        `,
+        methods: {
+            /* 이벤트 헨들러 등록 */
+            lclick: function (event) {
+                console.log(event.target);
+                alert(event.target.innerHTML);
+            }
+        },
+        components: {
+            /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+
+        },
+    };
+
+// 인스턴스 만들기
+new Vue({
+    /* edtmc^2w */
+    el: "#app",
+    data: {
+            /* 인스턴스 안에서 사용되는 변수 등록, 공유 변수 */
+            globalmsg1: "인스턴스에서 전역 컴포넌트로 넘겨진 메시지 1",
+            globalmsg2: "인스턴스에서 전역 컴포넌트로 넘겨진 메시지 2",
+            localmsg1: "인스턴스에서 지역 컴포넌트로 넘겨진 메시지 1",
+            localmsg2: "인스턴스에서 지역 컴포넌트로 넘겨진 메시지 2",
+    },
+    methods: {
+
+    },
+    components: {
+        /* 지역 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 - 지역 컴포넌트는 등록 해야 한다. */
+        "local-component": localComponent,
+    },
+});
+
+</script>
