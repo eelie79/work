@@ -103,11 +103,11 @@
   var componenChild = {
       /* pdtmc^2w */
       props: [
-            "counter"
+            "num"
       ] ,
       data: function() {
           return {
-             num: 0,
+
           }
       },
       template: `
@@ -119,12 +119,13 @@
       `,
       methods: {
         addCounter: function (event) {
-             this.$emit('add-counter', this.$data.num);
-             this.$data.num = this.$data.num+10;
+            // this.$emit('이벤트명', 값1, 값2);
+             this.$emit('add-counter', event, +10);
+             // this.$data.num = this.$data.num+10;
         },
         subCounter: function (event) {
-            this.$emit('sub-counter', this.$data.num);
-             this.$data.num = this.$data.num-10;
+            this.$emit('sub-counter', event, -10);
+            // 부모 메서드 호출
         }
       },
   };
@@ -137,11 +138,13 @@ new Vue({
     },
     //template: ``,
     methods: {
-        addCounter: function (param) {
-            this.$data.counter = this.$data.counter+1;
+        addCounter: function (event, param) {
+            // this.$data.counter = this.$data.counter+1;
+            this.$data.counter = this.$data.counter + param;
         },
-        subCounter: function (param) {
-            this.$data.counter = this.$data.counter-1;
+        subCounter: function (event, param) {
+            // this.$data.counter = this.$data.counter-1;
+            this.$data.counter = this.$data.counter + param;
         }
     },
     components: {

@@ -38,9 +38,14 @@
         <!-- v-bind:자식의props속성="부모의데이터속성" -->
         <component-top v-bind:propsdata="msgTop"></component-top>
 
+        <!-- 자식발생 이벤트 부모에 등록 v-on:사용자 이벤트명 $emit  -> 이벤트 메서드명 -->
+        <child-component v-bind:propsdata="message"></child-component>
+
         <!-- #할일 3 -->
         <!-- component-bottom 등록 -->
         <component-bottom v-bind:propsdata="msgBtm"></component-bottom>
+
+
     </div>
 
 </body>
@@ -48,3 +53,56 @@
 </html>
 
 <!-- vue 플러그인 임포트   -->
+
+<!-- vue 플러그인 임포트   -->
+<script src="https://unpkg.com/vue@2.5.16/dist/vue.js">/* vue 플러그인 임포트 */</script>
+<script>
+var componentTop = {
+    /* pdtmc^2w */
+    props: [ "propsdata"] ,
+    template: `
+      <p>{{ propsdata }}</p>
+    `,
+};
+// 하위에서 상위로 데이터 전송 이벤트 버블링   v-on 올릴때 / v-bind 내릴때
+var childComponent = {
+    /* pdtmc^2w */
+    props: [ "propsdata"] ,
+    template: `
+       <p>{{ propsdata }}</p>
+    `,
+    methods: {
+        이벤트명: function (event) {
+             this.$emit();
+        }
+    },
+};
+
+var componentBottom = {
+    /* pdtmc^2w */
+    props: [
+        "propsdata"
+    ] ,
+    template: `
+       <p>{{ propsdata }}</p>
+    `,
+};
+
+new Vue({
+    /* edtmc^2w */
+    el: "#app",
+    data: {
+        msgTop: "Top message!!! passed from Parent Component",
+        msgBtm: "Bottom message!!! passed from Parent Component",
+        message: "1234"
+    },
+    components: {
+        /* 컴포넌트 등록. 예시) "태그명" : 컴포넌트명 */
+        "component-top": componentTop,
+        "child-component": childComponent,
+        "component-bottom": componentBottom,
+    },
+});
+
+
+</script>
