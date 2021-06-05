@@ -158,7 +158,7 @@
             "            console.log(\"updated\");",
             "        },",
             "    }",
-            "</script cript>"
+            "</script>"
         ],
         "description": "Vue Single File Component"
     },
