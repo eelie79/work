@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        body {
+            background-color: lightgrey;
+        }
+
+        body>#app {
+            text-align: center;
+            vertical-align: middle;
+            line-height: 2em;
+        }
+
+        p {
+            top: 50%;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        header {
+            background-color: orange;
+            margin: 10px 0;
+            width: 100%;
+            height: 60px;
+        }
+
+        /* <div id="content-list"> */
+        #content {
+            background-color: white;
+            margin: 0 0 30px 0;
+        }
+
+        aside {
+            background-color: gray;
+            margin: 20px;
+            width: calc(50% - 40px);
+            height: 200px;
+            float: left;
+        }
+
+        #content-list {
+            background-color: gray;
+            margin: 20px;
+            width: calc(50% - 40px);
+            float: right;
+            height: 200px;
+        }
+
+        #content::after {
+            clear: both;
+            display: block;
+            content: '';
+        }
+
+        footer {
+            margin: 10px 0;
+            background-color: lightblue;
+            width: 100%;
+            height: 50px;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <xmp>
+        5개의 컴포넌트 만들기
+            ComponentHeader
+            ComponentContent
+            ComponentFooter
+            ComponentAside
+            ComponentContentList
+    </xmp>
+    <hr />
+
+    <div id="app">
+        <!-- ComponentHeader -->
+
+
+        <!-- ComponentContent -->
+
+
+        <!-- ComponentFooter -->
+
+    </div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.12.0/umd/react.development.js">
+    /* import React, { Component, PureComponent } from "react" */
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.11.0/umd/react-dom.development.js">
+    /* import ReactDOM from "react-dom" */
+</script>
+<script type="text/babel">
+    class CompnentHeader extends React.Component {
+
+        static defaultProps = {  /*  props의 디폴트 값 설정 */  }
+        static propsTypes = {  /* props의 프로퍼티 타입 설정 */ }
+        state = {
+            // 상태값(변수)을 정의한다.
+
+        }
+        style = {
+            // 컴포넌트 내부에서 사용할 인라인 스타일을 정의한다.
+            // getter 를 사용하면 객체 내부 참조가 가능하다.
+
+        }
+        func = {
+            // func에 정의된 메서드는 반드시 constructor에서 this를 bind() 처리해야 한다.
+            // func에는 자식 컴포넌트에 넘길 메서드만 작성한다.
+            // 왜 자식에게 부모 메서드를 넘기나? 부모의 상태값을 변경하기 위해서.
+
+        }
+        constructor(props) {
+            super()
+            // this 바인딩. 예시) this.handler = this.handler.bind(this)
+            // func 에 정의한 메서드는 반드시 this bind 처리해야 한다.
+
+            // ref 만들기. 예시) this.inputref = React.createRef()
+
+        }
+        componentDidMount() {
+            // 마운트 완료 후에 실행됨 : 페이지 load 될 때 한번
+            // componentDidMount가 사용되는 경우: redux 구독 설정, focus 줄때
+        }
+        componentDidUpdate(prevProps, prevState) {
+            // 업데이트 완료 후에 실행됨 : 여러번, state 가 변경될 때마다
+        }
+        componentWillUnmount() {
+            // 언마운트 완료 후에 실행됨 : 페이지 unload 될 때 한번
+            // componentWillUnmount가 사용되는 경우: redux 구독 해제, 이벤트 핸들러 해제
+        }
+        handler = (event)=>{
+            // 이벤트 핸들러는 화살표 함수로 만들면 this bind()를 생략해도 된다
+            console.log(event.target)
+        }
+        render() { // JSX로 화면 만들기
+            return (
+
+                    <header>
+                        Header
+                    </header>
+
+            )
+        }
+    };
+
+    class ComponentContent extends React.Component {
+
+        static defaultProps = {  /*  props의 디폴트 값 설정 */  }
+        static propsTypes = {  /* props의 프로퍼티 타입 설정 */ }
+        state = {
+            // 상태값(변수)을 정의한다.
+
+        }
+        style = {
+            // 컴포넌트 내부에서 사용할 인라인 스타일을 정의한다.
+            // getter 를 사용하면 객체 내부 참조가 가능하다.
+
+        }
+        func = {
+            // func에 정의된 메서드는 반드시 constructor에서 this를 bind() 처리해야 한다.
+            // func에는 자식 컴포넌트에 넘길 메서드만 작성한다.
+            // 왜 자식에게 부모 메서드를 넘기나? 부모의 상태값을 변경하기 위해서.
+
+        }
+        constructor(props) {
+            super()
+            // this 바인딩. 예시) this.handler = this.handler.bind(this)
+            // func 에 정의한 메서드는 반드시 this bind 처리해야 한다.
+
+            // ref 만들기. 예시) this.inputref = React.createRef()
+
+        }
+        componentDidMount() {
+            // 마운트 완료 후에 실행됨 : 페이지 load 될 때 한번
+            // componentDidMount가 사용되는 경우: redux 구독 설정, focus 줄때
+        }
+        componentDidUpdate(prevProps, prevState) {
+            // 업데이트 완료 후에 실행됨 : 여러번, state 가 변경될 때마다
+        }
+        componentWillUnmount() {
+            // 언마운트 완료 후에 실행됨 : 페이지 unload 될 때 한번
+            // componentWillUnmount가 사용되는 경우: redux 구독 해제, 이벤트 핸들러 해제
+        }
+        handler = (event)=>{
+            // 이벤트 핸들러는 화살표 함수로 만들면 this bind()를 생략해도 된다
+            console.log(event.target)
+        }
+        render() { // JSX로 화면 만들기
+            return (
+
+                    <div id="content">
+                        <p>Content</p>
+                        <ComponentAside />
+                        <ComponentList />
+                    </div>
+
+            )
+        }
+    };
+
+    class ComponentAside extends React.Component {
+
+        static defaultProps = {  /*  props의 디폴트 값 설정 */  }
+        static propsTypes = {  /* props의 프로퍼티 타입 설정 */ }
+        state = {
+            // 상태값(변수)을 정의한다.
+
+        }
+        style = {
+            // 컴포넌트 내부에서 사용할 인라인 스타일을 정의한다.
+            // getter 를 사용하면 객체 내부 참조가 가능하다.
+
+        }
+        func = {
+            // func에 정의된 메서드는 반드시 constructor에서 this를 bind() 처리해야 한다.
+            // func에는 자식 컴포넌트에 넘길 메서드만 작성한다.
+            // 왜 자식에게 부모 메서드를 넘기나? 부모의 상태값을 변경하기 위해서.
+
+        }
+        constructor(props) {
+            super()
+            // this 바인딩. 예시) this.handler = this.handler.bind(this)
+            // func 에 정의한 메서드는 반드시 this bind 처리해야 한다.
+
+            // ref 만들기. 예시) this.inputref = React.createRef()
+
+        }
+        componentDidMount() {
+            // 마운트 완료 후에 실행됨 : 페이지 load 될 때 한번
+            // componentDidMount가 사용되는 경우: redux 구독 설정, focus 줄때
+        }
+        componentDidUpdate(prevProps, prevState) {
+            // 업데이트 완료 후에 실행됨 : 여러번, state 가 변경될 때마다
+        }
+        componentWillUnmount() {
+            // 언마운트 완료 후에 실행됨 : 페이지 unload 될 때 한번
+            // componentWillUnmount가 사용되는 경우: redux 구독 해제, 이벤트 핸들러 해제
+        }
+        handler = (event)=>{
+            // 이벤트 핸들러는 화살표 함수로 만들면 this bind()를 생략해도 된다
+            console.log(event.target)
+        }
+        render() { // JSX로 화면 만들기
+            return (
+                <aside>
+                            Aside
+                </aside>
+            )
+        }
+    };
+
+    class ComponentList extends React.Component {
+
+        static defaultProps = {  /*  props의 디폴트 값 설정 */  }
+        static propsTypes = {  /* props의 프로퍼티 타입 설정 */ }
+        state = {
+            // 상태값(변수)을 정의한다.
+
+        }
+        style = {
+            // 컴포넌트 내부에서 사용할 인라인 스타일을 정의한다.
+            // getter 를 사용하면 객체 내부 참조가 가능하다.
+
+        }
+        func = {
+            // func에 정의된 메서드는 반드시 constructor에서 this를 bind() 처리해야 한다.
+            // func에는 자식 컴포넌트에 넘길 메서드만 작성한다.
+            // 왜 자식에게 부모 메서드를 넘기나? 부모의 상태값을 변경하기 위해서.
+
+        }
+        constructor(props) {
+            super()
+            // this 바인딩. 예시) this.handler = this.handler.bind(this)
+            // func 에 정의한 메서드는 반드시 this bind 처리해야 한다.
+
+            // ref 만들기. 예시) this.inputref = React.createRef()
+
+        }
+        componentDidMount() {
+            // 마운트 완료 후에 실행됨 : 페이지 load 될 때 한번
+            // componentDidMount가 사용되는 경우: redux 구독 설정, focus 줄때
+        }
+        componentDidUpdate(prevProps, prevState) {
+            // 업데이트 완료 후에 실행됨 : 여러번, state 가 변경될 때마다
+        }
+        componentWillUnmount() {
+            // 언마운트 완료 후에 실행됨 : 페이지 unload 될 때 한번
+            // componentWillUnmount가 사용되는 경우: redux 구독 해제, 이벤트 핸들러 해제
+        }
+        handler = (event)=>{
+            // 이벤트 핸들러는 화살표 함수로 만들면 this bind()를 생략해도 된다
+            console.log(event.target)
+        }
+        render() { // JSX로 화면 만들기
+            return (
+                <div id="content-list">
+                    List
+                </div>
+            )
+        }
+    };
+
+    class ComponentFooter extends React.Component {
+
+        static defaultProps = {  /*  props의 디폴트 값 설정 */  }
+        static propsTypes = {  /* props의 프로퍼티 타입 설정 */ }
+        state = {
+            // 상태값(변수)을 정의한다.
+
+        }
+        style = {
+            // 컴포넌트 내부에서 사용할 인라인 스타일을 정의한다.
+            // getter 를 사용하면 객체 내부 참조가 가능하다.
+
+        }
+        func = {
+            // func에 정의된 메서드는 반드시 constructor에서 this를 bind() 처리해야 한다.
+            // func에는 자식 컴포넌트에 넘길 메서드만 작성한다.
+            // 왜 자식에게 부모 메서드를 넘기나? 부모의 상태값을 변경하기 위해서.
+
+        }
+        constructor(props) {
+            super()
+            // this 바인딩. 예시) this.handler = this.handler.bind(this)
+            // func 에 정의한 메서드는 반드시 this bind 처리해야 한다.
+
+            // ref 만들기. 예시) this.inputref = React.createRef()
+
+        }
+        componentDidMount() {
+            // 마운트 완료 후에 실행됨 : 페이지 load 될 때 한번
+            // componentDidMount가 사용되는 경우: redux 구독 설정, focus 줄때
+        }
+        componentDidUpdate(prevProps, prevState) {
+            // 업데이트 완료 후에 실행됨 : 여러번, state 가 변경될 때마다
+        }
+        componentWillUnmount() {
+            // 언마운트 완료 후에 실행됨 : 페이지 unload 될 때 한번
+            // componentWillUnmount가 사용되는 경우: redux 구독 해제, 이벤트 핸들러 해제
+        }
+        handler = (event)=>{
+            // 이벤트 핸들러는 화살표 함수로 만들면 this bind()를 생략해도 된다
+            console.log(event.target)
+        }
+        render() { // JSX로 화면 만들기
+            return (
+
+                    <footer>
+                        Footer
+                    </footer>
+
+            )
+        }
+    };
+
+
+  ReactDOM.render(
+    <div>
+        <CompnentHeader />
+        <ComponentContent />
+        <ComponentFooter/>
+    </div>
+    , document.getElementById("app")
+  )
+</script>
+</html>

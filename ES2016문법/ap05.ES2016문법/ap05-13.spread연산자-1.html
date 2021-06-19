@@ -29,24 +29,28 @@
             iterator를 생성해서 next()로 순회할 수 있는 자료구조가 이터러블
     </xmp>
 
-    <xmp>
-    ES6 코드를 브라우저에서 실행하려면 babel 이 필요하다.
 
-    < script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">/* ES5로 변환 */</script>
-    < script type="text/babel">
-        // ES6 코딩
-    </script>
-    </xmp>
+    <!-- ES6 코드를 브라우저에서 실행하려면 babel 이 필요하다. -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
-        /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
-    </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js">
+    /* 자바스크립트로 컴파일러. ES6-->ES5, JSX-->ES5 */
+</script>
 
+<script type="text/babel">
+    const cities = ["서울", "부산", "제주"];
+    console.log( cities[0], cities[1], cities[2]);
+    console.log( cities );
 
-    <script type="text/babel">
-      alert("test");
-      console.log("test");
-    </script>
+    const east = ["u","k","i"];
+    const west = ["n","c","g"];
+    const contries = [...east, ...west];  // ... : spread 연산자
+    console.log( contries );
+
+    let lakes = ["경포호", "화진포", "송지호", "청초호"];
+    let [first, ...rest] = lakes;
+    console.log( first );
+
+</script>
 </body>
 
 </html>
